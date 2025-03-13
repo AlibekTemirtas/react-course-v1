@@ -1,14 +1,17 @@
 import {useCount} from "./use-count.ts";
 
+const MAX = 5;
+const MIN = 0;
+
 export const Counter = (props) => {
     const {count, increment, decrement} = useCount();
 
     function isDisabledIncrement() {
-        return count >= 5;
+        return count >= MAX;
     }
 
     function isDisabledDecrement() {
-        return count <= 0;
+        return count <= MIN;
     }
 
     return (

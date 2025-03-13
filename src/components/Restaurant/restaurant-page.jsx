@@ -1,16 +1,16 @@
 import {restaurants} from "../../../materials/mock.js";
 import {Restaurant} from "./Restaurant/Restaurant.jsx";
-import {useSelectedRestaurant} from "./use-restaurant.js";
 import {TabItem} from "../Layout/Tab/TabItem.jsx";
+import {useState} from "react";
 
 export const RestaurantPage = () => {
-    let {selectedRestaurant, update} = useSelectedRestaurant(restaurants[0]);
+    const [selectedRestaurant, setRestaurant] = useState(restaurants[0]);
 
     function selectRestaurant(id) {
         const _restaurant = restaurants.find(item => item.id === id);
 
         if (!!_restaurant) {
-            update(_restaurant);
+            setRestaurant(_restaurant);
 
             return;
         }
