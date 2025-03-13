@@ -11,8 +11,6 @@ export const Restaurant = ({restaurant}) => {
 
             {menu?.length ? <Menus menus={menu} /> : 'No menu'}
             {reviews?.length ? <Reviews reviews={reviews} /> : 'No reviews'}
-
-            <Counter />
         </div>
     )
 }

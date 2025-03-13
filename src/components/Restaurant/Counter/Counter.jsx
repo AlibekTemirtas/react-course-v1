@@ -12,7 +12,7 @@ export const Counter = (props) => {
     }
 
     return (
-        <div className="group">
+        <div className="group" style={{'display': 'flex', 'alignItem': 'center', 'gap': '12px'}}>
             <button onClick={decrement} disabled={isDisabledDecrement()}>-</button>
             <div>{count}</div>
             <button onClick={increment} disabled={isDisabledIncrement()}>+</button>

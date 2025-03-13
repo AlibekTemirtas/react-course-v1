@@ -1,3 +1,6 @@
+import {Counter} from "../Counter/Counter.jsx";
+import {Dish} from "../Dish/Dish.jsx";
+
 export const Menus = ({menus}) => {
     return (
         <div className="group">
@@ -5,7 +8,9 @@ export const Menus = ({menus}) => {
                 Меню
             </h3>
             <ul className="group-list">
-                {menus.map(({name}) => (<li key={name}>{name}</li>))}
+                {menus.map((menu) => (
+                    <Dish key={menu.id} menu={menu}/>
+                ))}
             </ul>
         </div>
     )
