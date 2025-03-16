@@ -4,18 +4,16 @@ import {TabItem} from "../Layout/Tab/TabItem.jsx";
 import {useState} from "react";
 
 export const RestaurantPage = () => {
-    const [selectedRestaurant, setRestaurant] = useState(restaurants[0]);
+    const [selectedRestaurantId, setRestaurantId] = useState(restaurants[0].id);
+
+    const selectedRestaurant = restaurants.find(item => item.id === selectedRestaurantId);
 
     function selectRestaurant(id) {
-        const _restaurant = restaurants.find(item => item.id === id);
-
-        if (!!_restaurant) {
-            setRestaurant(_restaurant);
-
+        if (selectedRestaurantId === id) {
             return;
         }
 
-        alert('No restaurant');
+        setRestaurantId(id);
     }
 
     return (
@@ -25,12 +23,13 @@ export const RestaurantPage = () => {
             <div className="tabs">
                 {restaurants.map(({id, name}) =>
                     <TabItem onClick={() => selectRestaurant(id)}
-                             active={selectedRestaurant?.id === id}
+                             active={selectedRestaurantId === id}
                              key={id}>{name}</TabItem>)}
             </div>
 
             <div className="restaurant-content">
-                {selectedRestaurant ? <Restaurant restaurant={selectedRestaurant}/> : 'No restaurant'}
+                {selectedRestaurant ? <Restaurant key={selectedRestaurantId}
+                                                  restaurant={selectedRestaurant}/> : 'No restaurant'}
             </div>
         </div>
     )
