@@ -1,4 +1,5 @@
 import {DEFAULT_REVIEW_FORM_VALUE, REVIEW_FORM_ACTION} from "./actions.js";
+import {RATING_MAX, RATING_MIN} from "./constants.js";
 
 export function reviewFormReducer(state, {type, payload}) {
     switch (type) {
@@ -14,10 +15,16 @@ export function reviewFormReducer(state, {type, payload}) {
                 text: payload
             }
 
-        case REVIEW_FORM_ACTION.SET_RATING:
+        case REVIEW_FORM_ACTION.INCREMENT_RATING:
             return {
                 ...state,
-                rating: payload
+                rating: Math.min(state.rating + 1, RATING_MAX)
+            }
+
+        case REVIEW_FORM_ACTION.DECREMENT_RATING:
+            return {
+                ...state,
+                rating: Math.max(state.rating - 1, RATING_MIN)
             }
 
         case REVIEW_FORM_ACTION.RESET_FORM:

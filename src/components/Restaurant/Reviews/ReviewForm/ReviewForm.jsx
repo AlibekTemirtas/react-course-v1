@@ -3,26 +3,19 @@ import {RATING_MAX, RATING_MIN} from "./constants.js";
 import {userStateFacade} from "./review-state-facade.js";
 
 export const ReviewForm = (props) => {
-    const {name, text, rating, setName, setText, resetValue, setRating} = userStateFacade();
-
-    function incrementRating() {
-        setRating(Math.min(rating + 1, RATING_MAX));
-    }
-
-    function decrementRating() {
-        setRating(Math.max(rating - 1, RATING_MIN));
-    }
-
-    function sendForm() {
-        const payload = {
-            name,
-            text,
-            rating
-        }
-    }
+    const {
+        name,
+        text,
+        rating,
+        setName,
+        setText,
+        resetValue,
+        incrementRating,
+        decrementRating
+    } = userStateFacade();
 
     return (
-        <div className={'review-panel'}>
+        <div ref={() => console.log('displayed')} className={'review-panel'}>
             <h4>Review form</h4>
             <form className={'review-form'}>
                 <label>
@@ -50,7 +43,7 @@ export const ReviewForm = (props) => {
                          min={RATING_MIN}/>
                 <br/>
 
-                <button type="button" onClick={() => sendForm()}>Send</button>
+                <button type="button" >Send</button>
                 <button type="button" onClick={() => resetValue()}>Reset</button>
             </form>
         </div>
