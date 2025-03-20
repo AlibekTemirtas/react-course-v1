@@ -1,9 +1,9 @@
 import {Counter} from "../../Counter/Counter.jsx";
 import {RATING_MAX, RATING_MIN} from "./constants.js";
-import {ReviewStateFacade} from "./review-state-facade.js";
+import {userStateFacade} from "./review-state-facade.js";
 
 export const ReviewForm = (props) => {
-    const {name, text, rating, setName, setText, resetValue, setRating} = ReviewStateFacade();
+    const {name, text, rating, setName, setText, resetValue, setRating} = userStateFacade();
 
     function incrementRating() {
         setRating(Math.min(rating + 1, RATING_MAX));
@@ -19,8 +19,6 @@ export const ReviewForm = (props) => {
             text,
             rating
         }
-
-        console.log('sendForm: ', payload);
     }
 
     return (

@@ -2,7 +2,7 @@ import {useReducer} from "react";
 import {reviewFormReducer} from "./user-form-reducer.jsx";
 import {DEFAULT_REVIEW_FORM_VALUE, REVIEW_FORM_ACTION} from "./actions.js";
 
-export const ReviewStateFacade = () => {
+export const userStateFacade = () => {
     const [state, dispatch] = useReducer(reviewFormReducer, DEFAULT_REVIEW_FORM_VALUE);
 
     function setName(value) {
