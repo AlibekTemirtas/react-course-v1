@@ -1,20 +1,20 @@
 import {useCallback, useEffect, useState} from "react";
 
+
+const calculatePercent = useCallback(() => {
+    const scrollTop = window.scrollY;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    return Math.round((scrollTop / scrollHeight) * 100);
+},[]);
+
 export const ScrollProgressBar = (props) => {
     const [percent, setProgress] = useState(0);
 
-    const calculatePercent = useCallback(() => {
-        const scrollTop = window.scrollY;
-        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        return Math.round((scrollTop / scrollHeight) * 100);
-    },[]);
-
-    const handleScroll = useCallback(() => {
-        setProgress(calculatePercent());
-    }, [calculatePercent]);
-
-
     useEffect(() => {
+        const handleScroll = useCallback(() => {
+            setProgress(calculatePercent());
+        }, [calculatePercent]);
+
         window.addEventListener('scroll', handleScroll);
 
         return () => window.removeEventListener('scroll', handleScroll)
