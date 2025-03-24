@@ -1,13 +1,15 @@
 
 import styles from './header.module.scss';
-import {HeaderAuth} from "../header-auth/header-auth.jsx";
+import {AuthButton} from "../auth-button/auth-button.jsx";
+import {ThemeToggleButton} from "../../shared/components/theme-toggle-button/theme-toggle-button.jsx";
 
 export const Header = ({title}) => {
     return (
         <header className={styles.header}>
             <div>{title}</div>
 
-            <HeaderAuth />
+            <ThemeToggleButton />
+            <AuthButton />
         </header>
     )
 }

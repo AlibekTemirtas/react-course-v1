@@ -1,6 +1,6 @@
 import {restaurants} from "../../../../materials/mock.js";
 import {Restaurant} from "./restaurant/Restaurant.jsx";
-import {TapItem} from "../../shared/components/tap/tap-item.jsx";
+import {TabItem} from "../../shared/components/tab/tab-item.jsx";
 import {useCallback, useState} from "react";
 
 export const RestaurantPage = () => {
@@ -22,9 +22,9 @@ export const RestaurantPage = () => {
 
             <div className="tabs">
                 {restaurants.map(({id, name}) =>
-                    <TapItem onClick={() => selectRestaurant(id)}
+                    <TabItem onClick={() => selectRestaurant(id)}
                              active={selectedRestaurantId === id}
-                             key={id}>{name}</TapItem>)}
+                             key={id}>{name}</TabItem>)}
             </div>
 
             <div className="restaurant-content">

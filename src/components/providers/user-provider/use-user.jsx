@@ -1,11 +1,10 @@
 import {useCallback, useState} from "react";
-import {UserModel} from "../models/user-model.js";
 
 export const useUser = () => {
     const [user, setUser] = useState(null);
 
     const signIn = useCallback(() => {
-        setUser(new UserModel('John'));
+        setUser({ name: 'John' });
     }, []);
 
     const logOut = useCallback(() => {

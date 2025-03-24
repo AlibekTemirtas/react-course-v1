@@ -1,6 +1,6 @@
 import {Button} from "../button/button.jsx";
 
-export const TapItem = ({onClick, active, children}) => {
+export const TabItem = ({onClick, active, children}) => {
     return (
         <Button onClick={onClick}
                 disabled={active}
