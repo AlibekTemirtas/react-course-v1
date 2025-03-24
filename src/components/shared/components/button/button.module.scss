@@ -1,0 +1,19 @@
+.button {
+  border: none;
+  cursor: pointer;
+
+  &__default {
+    background-color: #c3e2ff;
+    color: #000;
+  }
+
+  &__disabled {
+    background-color: #ccc;
+    color: #000;
+  }
+
+  &_primary {
+    background-color: #46a3ff;
+    color: #000;
+  }
+}

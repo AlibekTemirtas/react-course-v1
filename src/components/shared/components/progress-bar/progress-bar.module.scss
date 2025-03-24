@@ -1,0 +1,11 @@
+.ProgressBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    &Item {
+        background-color: #46a3ff;
+        height: 4px;
+    }
+}
