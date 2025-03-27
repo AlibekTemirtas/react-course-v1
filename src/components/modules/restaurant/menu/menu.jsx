@@ -1,4 +1,4 @@
-import {Dish} from "../dish/Dish.jsx";
+import {MenuContainer} from "./menu-container.jsx";
 
 export const Menu = ({menus}) => {
     return (
@@ -7,8 +7,8 @@ export const Menu = ({menus}) => {
                 Меню
             </h3>
             <ul className="group-list">
-                {menus.map((menu) => (
-                    <Dish key={menu.id} menu={menu}/>
+                {menus.map((id) => (
+                    <MenuContainer key={id} id={id}/>
                 ))}
             </ul>
         </div>

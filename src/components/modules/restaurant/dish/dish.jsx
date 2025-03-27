@@ -5,12 +5,14 @@ const MAX = 5;
 const MIN = 0;
 
 export const Dish = ({menu}) => {
-    const { name, price, ingredients } = menu;
+    const { id, name, price, ingredients } = menu;
+
     const {
         count,
         increment,
         decrement
-    } = useCount(MIN);
+    } = useCount(id);
+
 
     return (
         <div className={'dish-item'}>
