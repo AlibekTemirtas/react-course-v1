@@ -1,8 +1,11 @@
 import {useSelector} from "react-redux";
 import {selectRestaurantById} from "../../../../redux/entities/restaurant/restaurant-slice.js";
-import {TabItem} from "../../../shared/components/tab/tab-item.jsx";
+import {NavLink} from "react-router";
+import classNames from "classnames";
 
-export const RestaurantTabContainer = ({id, onClick, isActive}) => {
+import styles from './restaurant-tab.module.scss';
+
+export const RestaurantTabContainer = ({id}) => {
     const restaurant = useSelector((state) => selectRestaurantById(state, id));
 
     if (!restaurant) {
@@ -12,8 +15,8 @@ export const RestaurantTabContainer = ({id, onClick, isActive}) => {
     const { name } = restaurant;
 
     return (
-        <TabItem onClick={onClick}
-                 active={isActive}
-                 key={id}>{name}</TabItem>
+        <NavLink to={id} className={({ isActive }) => classNames(isActive && styles.tabActive)}>
+            {name}
+        </NavLink>
     )
 }
