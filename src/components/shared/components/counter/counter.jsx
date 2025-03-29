@@ -9,13 +9,13 @@ export const Counter = ({
 }) => {
 
     function handleIncrement() {
-        if (value <= max) {
+        if (value < max) {
             onIncrement();
         }
     }
 
     function handleDecrement() {
-        if (value >= min) {
+        if (value > min) {
             onDecrement();
         }
     }

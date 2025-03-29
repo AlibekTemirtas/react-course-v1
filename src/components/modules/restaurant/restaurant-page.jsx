@@ -1,35 +1,43 @@
-import {restaurants} from "../../../../materials/mock.js";
-import {Restaurant} from "./restaurant/Restaurant.jsx";
-import {TabItem} from "../../shared/components/tab/tab-item.jsx";
-import {useCallback, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {
+    selectActiveRestaurantId,
+    selectRestaurantIds,
+    setActiveRestaurant
+} from "../../../redux/entities/restaurant/restaurant-slice.js";
+import {RestaurantContainer} from "./restaurant/restaurant-container.jsx";
+import {RestaurantTabContainer} from "./restaurant/restaurant-tab-container.jsx";
 
 export const RestaurantPage = () => {
-    const [selectedRestaurantId, setRestaurantId] = useState(restaurants[0].id);
+    const restaurantsIds = useSelector(selectRestaurantIds);
+    const selectedRestaurantId = useSelector(selectActiveRestaurantId);
+    const dispatch = useDispatch();
 
-    const selectedRestaurant = restaurants.find(item => item.id === selectedRestaurantId);
+    useEffect(() => {
+        dispatch(setActiveRestaurant(restaurantsIds[0]));
+    }, []);
+
 
     const selectRestaurant = useCallback((id) => {
-        if (selectedRestaurantId === id) {
-            return;
-        }
-
-        setRestaurantId(id);
+        dispatch(setActiveRestaurant(id));
     }, [selectedRestaurantId]);
+
 
     return (
         <div className="restaurants">
             <h1>Рестораны</h1>
 
             <div className="tabs">
-                {restaurants.map(({id, name}) =>
-                    <TabItem onClick={() => selectRestaurant(id)}
-                             active={selectedRestaurantId === id}
-                             key={id}>{name}</TabItem>)}
+                {restaurantsIds.map((id) =>
+                    <RestaurantTabContainer id={id}
+                                            key={id}
+                                            onClick={() => selectRestaurant(id)}
+                                            isActive={selectedRestaurantId === id}/>)}
             </div>
 
             <div className="restaurant-content">
-                {selectedRestaurant ? <Restaurant key={selectedRestaurantId}
-                                                  restaurant={selectedRestaurant}/> : 'No restaurant'}
+                {selectedRestaurantId ? <RestaurantContainer key={selectedRestaurantId}
+                                                             id={selectedRestaurantId} /> : 'No restaurant'}
             </div>
         </div>
     )

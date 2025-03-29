@@ -3,10 +3,11 @@ import {use} from "react";
 import {UserContext} from "../../context/user-context/user-context.jsx";
 
 export const AuthButton = () => {
-    const { user, signIn, logOut } = use(UserContext);
+    const { user, isAuth, signIn, logOut } = use(UserContext);
+
     return (
         <div>
-            { user ?
+            { isAuth ?
                 <div>
                     { user.name }
                     <hr/>
