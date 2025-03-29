@@ -1,9 +1,10 @@
 import {useCallback, useMemo, useState} from "react";
 import {normalizedUsers} from "../../../../materials/normalized-mock.js";
 
+const _user = normalizedUsers[0];
+
 export const useUser = () => {
     const [user, setUser] = useState(null);
-    const _user = normalizedUsers[0];
 
     const signIn = useCallback(() => {
         setUser({ ..._user });

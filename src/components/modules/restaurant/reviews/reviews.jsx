@@ -1,6 +1,5 @@
 import {ReviewForm} from "./review-form/review-form.jsx";
 import {ReviewContainer} from "./review-container.jsx";
-import {Cart} from "../cart/cart.jsx";
 
 export const Reviews = ({reviews}) => {
     return (
@@ -17,7 +16,6 @@ export const Reviews = ({reviews}) => {
             </div>
             <hr/>
             <ReviewForm />
-            <Cart />
             <hr/>
         </div>
     )

@@ -11,7 +11,7 @@ export const ReviewContainer = ({id}) => {
     const { text } = review;
 
     return (
-        <div key={id}>
+        <div>
             <h4>{text}</h4>
         </div>
     )

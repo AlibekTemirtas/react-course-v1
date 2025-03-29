@@ -1,6 +1,6 @@
 import {useSelector} from "react-redux";
-import {selectCartByRestaurantId} from "../../../../redux/entities/restaurant/cart-slice.js";
-import {selectActiveRestaurantId} from "../../../../redux/entities/restaurant/restaurant-slice.js";
+import {selectCartByRestaurantId} from "../../../redux/entities/restaurant/cart-slice.js";
+import {selectActiveRestaurantId} from "../../../redux/entities/restaurant/restaurant-slice.js";
 
 export const Cart = () => {
     const restaurantId = useSelector(selectActiveRestaurantId);
@@ -11,6 +11,6 @@ export const Cart = () => {
     const dishCount = Object.keys(cart.dishCount).length;
 
     return (
-        <h1>Cart - {dishCount}</h1>
+        <div>Cart - {dishCount}</div>
     )
 }
