@@ -1,14 +1,12 @@
 import {useSelector} from "react-redux";
-import {selectCartByRestaurantId} from "../../../redux/entities/restaurant/cart-slice.js";
-import {selectActiveRestaurantId} from "../../../redux/entities/restaurant/restaurant-slice.js";
+import {selectAllCartItems} from "../../../redux/entities/restaurant/cart-slice.js";
 
 export const Cart = () => {
-    const restaurantId = useSelector(selectActiveRestaurantId);
-    const cart = useSelector((state) => selectCartByRestaurantId(state, restaurantId));
+    const carts = useSelector(selectAllCartItems);
 
-    if (!cart) return null;
+    if (!carts?.length) return null;
 
-    const dishCount = Object.keys(cart.dishCount).length;
+    const dishCount = carts.length;
 
     return (
         <div>Cart - {dishCount}</div>
