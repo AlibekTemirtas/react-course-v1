@@ -3,7 +3,7 @@ import {selectRestaurantById} from "../../../redux/entities/restaurant/restauran
 import {Menu} from "../restaurant/menu/menu.jsx";
 import {useParams} from "react-router";
 
-export const MenusPage = () => {
+export const MenuPage = () => {
     const { id } = useParams();
     const restaurant = useSelector((state) => selectRestaurantById(state, id));
 

@@ -10,7 +10,7 @@ import {store} from "../../redux/store.js";
 import {BrowserRouter, Navigate, Route, Routes} from "react-router";
 import {HomePage} from "../modules/home/home-page.jsx";
 import {RestaurantsPage} from "../modules/restaurants/restaurants-page.jsx";
-import {MenusPage} from "../modules/menus/menus-page.jsx";
+import {MenuPage} from "../modules/menus/menu-page.jsx";
 import {ReviewsPage} from "../modules/reviews/reviews-page.jsx";
 import {DishPage} from "../modules/dish/dish-page.jsx";
 
@@ -27,8 +27,8 @@ export const App = () => {
                                 <Route path='/restaurants' element={<RestaurantsPage />} >
                                     <Route path=':id' element={<RestaurantPage />} >
                                         <Route index element={<Navigate to='menu' replace />} />
-                                        <Route path='menu' element={<MenusPage />}></Route>
-                                        <Route path='reviews' element={<ReviewsPage />}></Route>
+                                        <Route path='menu' element={<MenuPage />} />
+                                        <Route path='reviews' element={<ReviewsPage />} />
                                     </Route>
                                 </Route>
                                 <Route path='/dish/:id' element={<DishPage />} />

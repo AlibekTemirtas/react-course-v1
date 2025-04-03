@@ -6,13 +6,16 @@ import {NavLink} from "react-router";
 import classNames from "classnames";
 
 export const Header = ({title}) => {
+    const isActive = ({ isActive }) => classNames(isActive && styles.linkActive);
+
+
     return (
         <header className={styles.header}>
             <div>{title}</div>
 
             <nav>
-                <NavLink to={'/'} className={({ isActive }) => classNames(isActive && styles.linkActive)}>Home</NavLink>
-                <NavLink to={'restaurants'} className={({ isActive }) => classNames(isActive && styles.linkActive)}>Restaurants</NavLink>
+                <NavLink to={'/'} className={isActive}>Home</NavLink>
+                <NavLink to={'restaurants'} className={isActive}>Restaurants</NavLink>
             </nav>
 
             <ThemeToggleButton />
